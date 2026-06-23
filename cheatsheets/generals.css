@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+
+}
+
+:root {
+    /* Paleta de Colores - Tema Moderno Oscuro (Glassmorphism sutil) */
+    --bg-color: #0f172a;
+    /* Fondo principal */
+    --surface-color: #1e293b;
+    /* Fondo de tarjetas / pie de página */
+    --surface-hover: #334155;
+    /* Fondo de tarjetas al pasar el ratón */
+    --text-primary: #f8fafc;
+    /* Texto principal */
+    --text-secondary: #cbd5e1;
+    /* Texto secundario (subtítulos) */
+
+    /* Colores de Acento */
+    --accent-color: #3b82f6;
+    /* Azul para resaltados */
+    --accent-hover: #60a5fa;
+    /* Azul claro interacciones */
+    --gradient-start: #60a5fa;
+    /* Inicio del degradado de títulos */
+    --gradient-end: #a78bfa;
+    /* Fin del degradado de títulos */
+
+    /* Espaciado y Tamaños */
+    --max-width: 900px;
+    --border-radius: 12px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    padding: 2rem 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.interior-contenedor {
+    width: 100%;
+    max-width: var(--max-width);
+}
+
+/* --- Linux Terminal Styles --- */
+.linux-terminal {
+    background-color: #1e1e1e; /* Fondo clásico tipo terminal oscura */
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    margin: 2rem 0;
+    width: 100%;
+    border: 1px solid var(--surface-hover);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Mantiene los bordes redondeados */
+}
+
+.linux-terminal-header {
+    background-color: #2d2d2d;
+    padding: 0.6rem 1rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #111;
+}
+
+.terminal-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.terminal-action {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.terminal-action.close { background-color: #ff5f56; }
+.terminal-action.minimize { background-color: #ffbd2e; }
+.terminal-action.maximize { background-color: #27c93f; }
+
+.terminal-title {
+    color: #a0aec0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    flex-grow: 1;
+    text-align: center;
+    padding-right: 44px; /* Compensación para que el título quede verdaderamente centrado */
+    user-select: none;
+}
+
+.linux-terminal-content {
+    padding: 1.5rem;
+    overflow-x: auto; /* Comportamiento responsivo, permite scroll lateral si la línea es muy larga */
+    background-color: #0d1117; /* Fondo un poco más oscuro para el área de código */
+}
+
+.linux-terminal-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Code and Comment Line Styles */
+p.code-line, 
+p.comment-line {
+    font-family: 'Consolas', 'Menlo', 'Monaco', 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0 0 0.4rem 0;
+    white-space: pre-wrap; /* Permite que respete los espacios pero baje si es necesario */
+    word-break: break-word;
+}
+
+p.code-line {
+    color: #e6edf3; /* Gris claro/blanco, color común en terminales para texto de código */
+}
+
+p.comment-line {
+    color: #8b949e; /* Color gris/verdoso sutil, común para comentarios en código */
+    font-style: italic;
+}
+
+/* ==================================
+   Navbar Styles
+   ================================== */
+.navbar {
+    padding: 1rem 1.5rem;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-back {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--border-radius);
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition);
+}
+
+.btn-back:hover {
+    color: var(--text-primary);
+    background-color: var(--surface-hover);
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateX(-3px);
+}
+
+.navbar-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../generals.css">
+    <title> VNC | Cheatsheet</title>
+</head>
+
+<body>
+    <nav class="navbar container">
+        <div class="interior-contenedor navbar-content">
+            <a href="../../index.html" class="btn-back">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Regresar al Menú
+            </a>
+            <span class="navbar-title">VNC Cheat Sheet</span>
+        </div>
+    </nav>
+
+    <header class="container">
+        <div class="interior-contenedor">
+            <p class="title-container"> VNC </p>
+            <p class="subtitle-container">
+                En esta sección encontrarás información sobre cómo configurar un servidor VNC en Linux.
+            </p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="interior-contenedor">
+            <h1 class="title-container"> Instalar VNC en Linux (RHEL)</h1>
+            <p class="subtitle-container">
+                En esta sección encontrarás información sobre cómo configurar un servidor VNC en Linux.
+            </p>
+
+            <h2 class="title-container"> 1. Actualizar el sistema e instalar el servidor TigerVNC</h2>
+
+            <div class="linux-terminal">
+                <div class="linux-terminal-header">
+                    <div class="terminal-actions">
+                        <div class="terminal-action close"></div>
+                        <div class="terminal-action minimize"></div>
+                        <div class="terminal-action maximize"></div>
+                    </div>
+                    <div class="terminal-title">user@linux-server:~</div>
+                </div>
+                <div class="linux-terminal-content">
+                    <p class="comment-line"># Actualizar el sistema e instalar el servidor TigerVNC</p>
+                    <p class="code-line">sudo dnf upgrade -y</p>
+                    <p class="code-line">sudo dnf install tigervnc-server -y</p>
+                    <p class="code-line"></p>
+                </div>
+            </div>
+
+            <h2 class="title-container">2. Configuracion del usuario(s) en el servidor </h2>
+
+            <div class="linux-terminal">
+                <div class="linux-terminal-header">
+                    <div class="terminal-actions">
+                        <div class="terminal-action close"></div>
+                        <div class="terminal-action minimize"></div>
+                        <div class="terminal-action maximize"></div>
+                    </div>
+                    <div class="terminal-title">user@linux-server:~</div>
+                </div>
+                <div class="linux-terminal-content">
+                    <p class="comment-line"># Crear el directorio de configuración y otorgarle los privilegios </p>
+                    <p class="code-line">sudo mkdir ~/.vnc</p>
+                    <p class="code-line">sudo chmod 700 ~/.vnc</p>
+                    <p class="code-line"></p>
+                    <p class="comment-line"> # Definir una nueva contraseña para la sesión vnc del usuario</p>
+                    <p class="code-line">vncpasswd</p>
+                    <p class="comment-line"> # En caso de que no se genere un archivo llamado passwd, ejecutamos el
+                        comando </p>
+                    <p class="code-line">vncpass /home/$USER/.vnc/passwd</p>
+                    <p class="comment-line"> # Otorgarle los privilegios al archivo </p>
+                    <p class="code-line">chmod 600 ~.vnc/passwd</p>
+                </div>
+            </div>
+
+            <h2 class="title-container"> 3. Configuración del servicio en el servidor.</h2>
+            <p> Para esta configuración, iniciaremos con la asignación de pantallas a cada usuario </p>
+            <div class="linux-terminal">
+                <div class="linux-terminal-header">
+                    <div class="terminal-actions">
+                        <div class="terminal-action close"></div>
+                        <div class="terminal-action minimize"></div>
+                        <div class="terminal-action maximize"></div>
+                    </div>
+                    <div class="terminal-title">user@linux-server:~</div>
+                </div>
+                <div class="linux-terminal-content">
+                    <p class="code-line">sudo vi /etc/tigervnc/vncserver.users</p>
+                </div>
+            </div>
+
+            <p> De tal forma que quede de la siguiente manera:</p>
+            <div class="linux-terminal">
+                <div class="linux-terminal-header">
+                    <div class="terminal-actions">
+                        <div class="terminal-action close"></div>
+                        <div class="terminal-action minimize"></div>
+                        <div class="terminal-action maximize"></div>
+                    </div>
+                    <div class="terminal-title">user@linux-server:~</div>
+                </div>
+                <div class="linux-terminal-content">
+                    <p class="code-line">:1=user1</p>
+                    <p class="code-line">:2=user2</p>
+                </div>
+            </div>
+
+            <h3> Preferencias del usuario </h3>
+            <p> En este archivo, se define la resolución de la pantalla para cada usuario. </p>
+            <div class="linux-terminal">
+                <div class="linux-terminal-header">
+                    <div class="terminal-actions">
+                        <div class="terminal-action close"></div>
+                        <div class="terminal-action minimize"></div>
+                        <div class="terminal-action maximize"></div>
+                    </div>
+                    <div class="terminal-title">user@linux-server:~</div>
+                </div>
+                <div class="linux-terminal-content">
+                    <p class="code-line">sudo vi ~/.vnc/config</p>
+                </div>
+            </div>
+
+            <p> La configuración recomendada es la siguiente: </p>
+            <div class="linux-terminal">
+                <div class="linux-terminal-header">
+                    <div class="terminal-actions">
+                        <div class="terminal-action close"></div>
+                        <div class="terminal-action minimize"></div>
+                        <div class="terminal-action maximize"></div>
+                    </div>
+                    <div class="terminal-title">user@linux-server:~</div>
+                </div>
+                <div class="linux-terminal-content">
+                    <p class="code-line">session=xfce</p>
+                    <p class="code-line">geometry=1920x1080</p>
+                    <p class="code-line">alwaysshared</p>
+                </div>
+            </div>
+
+            <h3> Script de inicio </h3>
+            <p> En este archivo se editan el script de inicio para cada usuario, como el escritorio que se desea
+                utilizar. </p>
+            <div class="linux-terminal">
+                <div class="linux-terminal-header">
+                    <div class="terminal-actions">
+                        <div class="terminal-action close"></div>
+                        <div class="terminal-action minimize"></div>
+                        <div class="terminal-action maximize"></div>
+                    </div>
+                    <div class="terminal-title">user@linux-server:~</div>
+                </div>
+                <div class="linux-terminal-content">
+                    <p class="code-line">sudo vi ~/.vnc/xstartup</p>
+                </div>
+            </div>
+
+            <p> La configuración recomendada es la siguiente: </p>
+            <div class="linux-terminal">
+                <div class="linux-terminal-header">
+                    <div class="terminal-actions">
+                        <div class="terminal-action close"></div>
+                        <div class="terminal-action minimize"></div>
+                        <div class="terminal-action maximize"></div>
+                    </div>
+                    <div class="terminal-title">user@linux-server:~</div>
+                </div>
+                <div class="linux-terminal-content">
+                    <p class="code-line">#!/bin/bash</p>
+                    <p class="code-line">unset SESSION_MANAGER</p>
+                    <p class="code-line">unset DBUS_SESSION_BUS_ADDRESS</p>
+                    <p class="code-line"># Iniciar el entorno de escritorio XFCE</p>
+                    <p class="code-line">startxfce4 &</p>
+                </div>
+            </div>
+
+            <h2 class="title-container"> 4. Inicio del servicio </h2>
+            <p> Para iniciar el servicio, se debe ejecutar el siguiente comando: </p>
+            <div class="linux-terminal">
+                <div class="linux-terminal-header">
+                    <div class="terminal-actions">
+                        <div class="terminal-action close"></div>
+                        <div class="terminal-action minimize"></div>
+                        <div class="terminal-action maximize"></div>
+                    </div>
+                    <div class="terminal-title">user@linux-server:~</div>
+                </div>
+                <div class="linux-terminal-content">
+                    <p class="comment-line"> # Recargar la configuración del servicio </p>
+                    <p class="code-line">sudo systemctl daemon-reload</p>
+                    <p class="comment-line"> # Habilitar el servicio </p>
+                    <p class="code-line">sudo systemctl enable vncserver@:1.service</p>
+                    <p class="comment-line"> # Iniciar el servicio </p>
+                    <p class="code-line">sudo systemctl start vncserver@:1.service</p>
+                    <p class="comment-line"> # Verificar el estado del servicio </p>
+                    <p class="code-line">sudo systemctl status vncserver@:1.service</p>
+                </div>
+            </div>
+
+            <h2 class="title-container"> 5. Probar el servicio</h2>
+            <p> Para probar el servicio, se debe ejecutar el siguiente comando desde la pc donde nos queremos conectar
+                al servidor: </p>
+            <div class="linux-terminal">
+                <div class="linux-terminal-header">
+                    <div class="terminal-actions">
+                        <div class="terminal-action close"></div>
+                        <div class="terminal-action minimize"></div>
+                        <div class="terminal-action maximize"></div>
+                    </div>
+                    <div class="terminal-title">user@linux-server:~</div>
+                </div>
+                <div class="linux-terminal-content">
+                    <p class="comment-line"> # Verificar el estado del servicio </p>
+                    <p class="code-line">ssh -L 5901:localhost:5901 user@linux-server</p>
+                </div>
+            </div>
+
+            <p> Así es como terminan estos pasos. En caso de dudas puedes consultar la documentación oficial de TigerVNC
+                o buscar en internet. </p>
+
+        </div>
+    </main>
+</body>
+
+</html>

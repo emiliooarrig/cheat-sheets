@@ -1,0 +1,323 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+:root {
+    /* Paleta de Colores - Tema Moderno Oscuro (Glassmorphism sutil) */
+    --bg-color: #0f172a;
+    /* Fondo principal */
+    --surface-color: #1e293b;
+    /* Fondo de tarjetas / pie de página */
+    --surface-hover: #334155;
+    /* Fondo de tarjetas al pasar el ratón */
+    --text-primary: #f8fafc;
+    /* Texto principal */
+    --text-secondary: #cbd5e1;
+    /* Texto secundario (subtítulos) */
+
+    /* Colores de Acento */
+    --accent-color: #3b82f6;
+    /* Azul para resaltados */
+    --accent-hover: #60a5fa;
+    /* Azul claro interacciones */
+    --gradient-start: #60a5fa;
+    /* Inicio del degradado de títulos */
+    --gradient-end: #a78bfa;
+    /* Fin del degradado de títulos */
+
+    /* Espaciado y Tamaños */
+    --max-width: 900px;
+    --border-radius: 12px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ==================================
+   Contenedores Principales
+   ================================== */
+.container {
+    width: 100%;
+    padding: 2rem 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.interior-contenedor {
+    width: 100%;
+    max-width: var(--max-width);
+}
+
+/* ==================================
+   Encabezado (Header)
+   ================================== */
+header.container {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.95) 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 5rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+header .title-container {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -1px;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+header .subtitle-container {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 650px;
+    margin: 0 auto;
+    font-weight: 400;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+/* ==================================
+   Sección Sobre el Creador
+   ================================== */
+section.container {
+    background-color: var(--surface-color);
+    /* Contraste con el fondo principal */
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 4rem 1.5rem;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+section .interior-contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+section .title-container {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle-creador {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 750px;
+    margin: 0 auto 2rem;
+    line-height: 1.8;
+}
+
+.contenedor-imagen {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--surface-hover);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    background-color: rgba(255, 255, 255, 0.05);
+    /* Funciona como placeholder si la imagen está vacía */
+    transition: var(--transition);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-imagen:hover {
+    transform: scale(1.05);
+    border-color: var(--accent-hover);
+}
+
+.imagen-creador {
+    height: 140%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ==================================
+   Contenido Principal (Main)
+   ================================== */
+main.container {
+    flex: 1;
+    /* Permite que el main crezca para empujar el footer hacia abajo */
+    padding: 4rem 1.5rem;
+}
+
+main .title-container {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+main .title-container::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1.6rem;
+    background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
+    border-radius: 4px;
+}
+
+/* ==================================
+   Lista de Códigos (Grid de Tarjetas)
+   ================================== */
+.list-sheets {
+    list-style: none;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
+.list-element {
+    background-color: var(--surface-color);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    position: relative;
+    overflow: hidden;
+}
+
+.list-element::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: transparent;
+    transition: var(--transition);
+}
+
+.list-element:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    background-color: var(--surface-hover);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.list-element:hover::before {
+    background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
+}
+
+.link-list {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 1.5rem 1.5rem 2rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: var(--transition);
+    height: 100%;
+}
+
+.list-element:hover .link-list {
+    color: var(--accent-hover);
+    padding-left: 2.5rem;
+    /* Efecto de desplazamiento interior */
+}
+
+/* ==================================
+   Pie de Página (Footer)
+   ================================== */
+footer.container {
+    background-color: var(--surface-color);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    margin-top: auto;
+}
+
+.texto-footer {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* ==================================
+   Animaciones Simples
+   ================================== */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================================
+   Diseño Responsivo (Media Queries)
+   ================================== */
+@media (max-width: 768px) {
+    header .title-container {
+        font-size: 2.5rem;
+    }
+
+    header.container {
+        padding: 4rem 1rem;
+    }
+
+    main.container {
+        padding: 2.5rem 1rem;
+    }
+
+    .list-sheets {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    header .title-container {
+        font-size: 2rem;
+    }
+
+    .link-list {
+        font-size: 1rem;
+        padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+    }
+
+    .list-element:hover .link-list {
+        padding-left: 2rem;
+    }
+}
