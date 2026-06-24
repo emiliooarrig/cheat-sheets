@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../generals.css">
+    <title> n8n | Cheatsheet</title>
+</head>
+
+<body>
+    <nav class="navbar container">
+        <div class="interior-contenedor navbar-content">
+            <a href="../../index.html" class="btn-back">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Regresar al Menú
+            </a>
+            <span class="navbar-title">n8n Cheat Sheet</span>
+        </div>
+    </nav>
+
+    <header class="container">
+        <div class="interior-contenedor">
+            <p class="title-container"> Instalación de n8n (self-hosted) con contenedores en Docker (Podman) </p>
+            <p class="subtitle-container">
+                En este documento se explica el procedimiento para la instalación de <strong>n8n</strong> usando
+                <strong>contenedores en docker</strong>.
+            </p>
+            <p class="subtitle-container">
+                Última actualización: 31 de Marzo del 2026
+            </p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="interior-contenedor">
+
+            <h2 class="title-container"> 1. Instalación de dependencias elementales</h2>
+            <p> Necesitamos instalar el contenedor de podman </p>
+
+            <div class="linux-terminal">
+                <div class="linux-terminal-header">
+                    <div class="terminal-actions">
+                        <div class="terminal-action close"></div>
+                        <div class="terminal-action minimize"></div>
+                        <div class="terminal-action maximize"></div>
+                    </div>
+                    <div class="terminal-title">user@linux-server:~</div>
+                </div>
+                <div class="linux-terminal-content">
+                    <p class="code-line">sudo yum install -y podman</p>
+                </div>
+            </div>
+
+            <h2 class="title-container"> 2. Crear el contenedor de Docker</h2>
+
+            <div class="linux-terminal">
+                <div class="linux-terminal-header">
+                    <div class="terminal-actions">
+                        <div class="terminal-action close"></div>
+                        <div class="terminal-action minimize"></div>
+                        <div class="terminal-action maximize"></div>
+                    </div>
+                    <div class="terminal-title">user@linux-server:~</div>
+                </div>
+                <div class="linux-terminal-content">
+                    <p class="code-line">podman run -d \</p>
+                    <p class="code-line">  --name n8n_final \</p>
+                    <p class="code-line">  -p 5678:5678 \</p>
+                    <p class="code-line">  -v n8n_data:/home/node/.n8n:Z \</p>
+                    <p class="code-line">  -e N8N_PROTOCOL=https \</p>
+                    <p class="code-line">  -e N8N_HOST=emiguzman.ddns.net \</p>
+                    <p class="code-line">  -e N8N_PATH=/n8n/ \</p>
+                    <p class="code-line">  -e WEBHOOK_URL=https://emiguzman.ddns.net/n8n/ \</p>
+                    <p class="code-line">  docker.io/n8nio/n8n</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="container">
+        <div class="interior-contenedor">
+            <ul class="footer-nav">
+                <li><a href="../../index.html">Inicio</a></li>
+                <li><a href="../vnc/vnc.html">VNC</a></li>
+                <li><a href="../n8n/n8n.html">n8n</a></li>
+            </ul>
+            <p class="texto-footer"> Creado con &#10084; en México por Emilio Guzmán </p>
+        </div>
+    </footer>
+</body>
+
+</html>
