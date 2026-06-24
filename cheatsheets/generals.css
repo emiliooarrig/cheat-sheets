@@ -58,6 +58,137 @@ body {
     max-width: var(--max-width);
 }
 
+/* ==================================
+   Encabezado de la Hoja (Header)
+   ================================== */
+header.container {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 3rem 1.5rem 2.5rem;
+}
+
+header .title-container {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.5px;
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+header .subtitle-container {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    font-weight: 400;
+    padding-left: 1rem;
+    border-left: 3px solid var(--accent-color);
+}
+
+header .subtitle-container + .subtitle-container {
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+    color: #94a3b8;
+    font-style: italic;
+}
+
+header .subtitle-container strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* ==================================
+   Títulos de Sección y Descripciones
+   ================================== */
+main .title-container {
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 2.5rem 0 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+main .title-container::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1.5rem;
+    flex-shrink: 0;
+    border-radius: 4px;
+    background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
+}
+
+main .subtitle-container {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+main h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--accent-hover);
+    margin: 2rem 0 0.75rem;
+}
+
+main p {
+    color: var(--text-secondary);
+    margin: 0.75rem 0;
+}
+
+main p strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* ==================================
+   Pie de Página (Footer)
+   ================================== */
+footer.container {
+    background-color: var(--surface-color);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2.5rem 1.5rem;
+    margin-top: auto;
+}
+
+footer .interior-contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    text-align: center;
+}
+
+.footer-nav {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 2rem;
+}
+
+.footer-nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.footer-nav a:hover {
+    color: var(--accent-hover);
+}
+
+.texto-footer {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
 /* --- Linux Terminal Styles --- */
 .linux-terminal {
     background-color: #1e1e1e; /* Fondo clásico tipo terminal oscura */
@@ -139,9 +270,7 @@ p.comment-line {
    ================================== */
 .navbar {
     padding: 1rem 1.5rem;
-    background: rgba(15, 23, 42, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background-color: var(--surface-color);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     position: sticky;
     top: 0;
